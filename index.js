@@ -14,10 +14,8 @@ program
 program.parse(process.argv);
 
 const argv = program.opts();
-console.log(argv);
 
 function invokeAction({ action, id, name, email, phone }) {
-  console.log();
   switch (action) {
     case "list":
       (async () => {
@@ -51,7 +49,7 @@ function invokeAction({ action, id, name, email, phone }) {
             phone,
           };
           const contacts = await contactsOperations.addContact(data);
-          console.log(contacts);
+          console.table(contacts);
         } catch (error) {
           console.log(error.message);
         }
@@ -63,7 +61,7 @@ function invokeAction({ action, id, name, email, phone }) {
         try {
           const contactId = +id;
           const contacts = await contactsOperations.removeContact(contactId);
-          console.log(contacts);
+          console.table(contacts);
         } catch (error) {
           console.log(error.message);
         }
