@@ -1,6 +1,6 @@
 const { Command } = require("commander");
 
-const contactsOperations = require("./contacts.js");
+const contactsOperations = require("./contacts");
 
 const program = new Command();
 
@@ -15,7 +15,7 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-function invokeAction({ action, id, name, email, phone }) {
+async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       (async () => {
